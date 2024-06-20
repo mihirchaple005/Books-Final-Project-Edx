@@ -7,7 +7,7 @@ import { addBookToSystem,
     getReviewUsingId, 
     getBookUsingISBNandPromise, 
     getAuthorUsingPromise,
-    getTitleUsingPromise,
+    getBookUsingTitleandPromise,
     modifyBookReview,
     deleteBookReview
 } from "../controllers/book.controller.js";
@@ -24,7 +24,7 @@ router.route("/find/books").get(getAllBooks)
 router.route("find/:id/review").get(getReviewUsingId)
 router.route("find/isbn/:isbn").get(getBookUsingISBNandPromise)
 router.route("find/author/:author").get(getAuthorUsingPromise)
-router.route("find/title/:title").get(getTitleUsingPromise)
+router.route("find/title/:title").get(getBookUsingTitleandPromise)
 router.route("modify/book/:id/review").get(modifyBookReview)
 router.route("delete/book/:id/review").get(deleteBookReview)
 

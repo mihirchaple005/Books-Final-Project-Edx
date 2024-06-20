@@ -109,7 +109,7 @@ const getBookUsingISBNandPromise = asyncHandler(async(req, res) => {
 
 
 const getAuthorUsingPromise = asyncHandler(async(req, res) => {
-    const author = await Book.findOne({author : req.params.author})
+    const author = await Book.find({author : req.params.author})
     .then((author) => {
         if (!author) {
             throw new ApiError(400, "Invalid Details, or there are np books with this author")
@@ -122,7 +122,7 @@ const getAuthorUsingPromise = asyncHandler(async(req, res) => {
     return res.status(200).json(new ApiResponse(200, author, "Author find successfully using promises"))
 })
 
-const getTitleUsingPromise = asyncHandler(async(req, res) => {
+const getBookUsingTitleandPromise = asyncHandler(async(req, res) => {
    const {title} = req.params;
    Book.find({ title: new RegExp(title, "i") })
     .then((books) => {
@@ -198,4 +198,4 @@ const deleteBookReview = asyncHandler(async(req, res) => {
 
 
 
-export {addBookToSystem,  updateReview, getBooksFromISBN, getBooksFromAuthor, getReviewFromISBN, getAllBooks, getReviewUsingId, getBookUsingISBNandPromise, getAuthorUsingPromise, getTitleUsingPromise, modifyBookReview, deleteBookReview}
+export {addBookToSystem,  updateReview, getBooksFromISBN, getBooksFromAuthor, getReviewFromISBN, getAllBooks, getReviewUsingId, getBookUsingISBNandPromise, getAuthorUsingPromise, getBookUsingTitleandPromise, modifyBookReview, deleteBookReview}
